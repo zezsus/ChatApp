@@ -1,6 +1,7 @@
 const express = require("express");
 const database = require("./config/connectdb");
 const cors = require("cors");
+const routers = require("./routers/index");
 require("dotenv").config();
 
 const app = express();
@@ -12,6 +13,8 @@ database.connectDB();
 
 app.use(express.json());
 app.use(cors());
+
+routers(app);
 
 app.use("/", (req, res) => {
   res.send("hello world");
