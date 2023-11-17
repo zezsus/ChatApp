@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import logo from "../assets/images/logo.svg";
 import "../assets/styles/Register.scss";
@@ -18,6 +18,12 @@ const Register = () => {
 
   const navigate = useNavigate();
 
+  useEffect(() => {
+    if (localStorage.getItem("chatApp")) {
+      navigate("/");
+    }
+  }, []);
+
   const handleOnChange = (e) => {
     setRegisterForm({ ...registerForm, [e.target.name]: e.target.value });
   };
@@ -36,8 +42,9 @@ const Register = () => {
             email,
             password,
           });
+          console.log(data);
           if (data.success) {
-            localStorage.setItem("chatApp", JSON.stringify(data.user));
+            localStorage.setItem("chatApp", JSON.stringify(data.newUser));
             navigate("/");
           }
         } catch (error) {

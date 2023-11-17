@@ -69,6 +69,7 @@ const Login = async (req, res) => {
     return res.status(200).json({
       success: true,
       message: "Login success",
+      user,
     });
   } catch (error) {
     return res.status(500).json({
@@ -78,4 +79,25 @@ const Login = async (req, res) => {
   }
 };
 
-module.exports = { Register, Login };
+const SetAvatar = async (req, res) => {
+  try {
+    const userId = req.params.id;
+    const avatarImage = req.params.image;
+    const userData = await User.findByIdAndUpdate(userId, {
+      isAvatarImageSet: true,
+      avatarImage: avatarImage,
+    });
+
+    return res.status(200).json({
+      isSet: userData.isAvatarImageSet,
+      image: userData.avatarImage,
+    });
+  } catch (error) {
+    return res.status(500).json({
+      success: false,
+      message: error.message,
+    });
+  }
+};
+
+module.exports = { Register, Login, SetAvatar };

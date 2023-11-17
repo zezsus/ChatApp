@@ -16,10 +16,6 @@ app.use(cors());
 
 routers(app);
 
-app.use("/", (req, res) => {
-  res.send("hello world");
-});
-
 app.listen(port, () => {
   console.log(`Server started on port ${port}`);
 });

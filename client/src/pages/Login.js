@@ -26,13 +26,14 @@ const Login = () => {
     }
   }, []);
 
-  const handleRegister = async (e) => {
+  const handleLogin = async (e) => {
     e.preventDefault();
     try {
       const { data } = await axios.post(loginRouter, {
         username,
         password,
       });
+      console.log(data);
       if (data.success) {
         localStorage.setItem("chatApp", JSON.stringify(data.user));
         navigate("/");
@@ -43,7 +44,7 @@ const Login = () => {
   };
   return (
     <div className="form">
-      <form onSubmit={handleRegister} className="login-form">
+      <form onSubmit={handleLogin} className="login-form">
         <div className="brand">
           <img src={logo} alt="logo" />
           <h1>Login</h1>

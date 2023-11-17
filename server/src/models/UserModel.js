@@ -17,11 +17,11 @@ const userShema = new Schema(
       type: String,
       required: true,
     },
-    isAvataImageSet: {
+    isAvatarImageSet: {
       type: Boolean,
       default: false,
     },
-    avataImage: {
+    avatarImage: {
       type: String,
       default: "",
     },
