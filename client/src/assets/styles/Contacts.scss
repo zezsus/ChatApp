@@ -1,0 +1,96 @@
+.contacts-file {
+  display: grid;
+  grid-template-rows: 10% 75% 15%;
+  overflow: hidden;
+  background-color: black;
+
+  .brand {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+    margin: 1rem;
+
+    img {
+      height: 3rem;
+    }
+
+    h3 {
+      color: white;
+      text-transform: uppercase;
+      padding: 0;
+      margin: 0;
+    }
+  }
+
+  .contacts {
+    display: flex;
+    flex-direction: column;
+    gap: 0.3rem;
+    overflow: auto;
+    margin-bottom: 1rem;
+    padding-left: 0.4rem;
+    max-height: 65vh;
+
+    &::-webkit-scrollbar {
+      width: 0.2rem;
+      &-thumb {
+        background-color: #ffffff39;
+        width: 0.1rem;
+        border-radius: 1rem;
+      }
+    }
+
+    .contact {
+      background-color: #665d5d;
+      min-height: 3.5rem;
+      width: 98%;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      padding: 0.4rem;
+      border-radius: 0.2rem;
+      gap: 1rem;
+
+      .avatar {
+        img {
+          height: 3rem;
+        }
+      }
+
+      .username {
+        h4 {
+          margin: 0;
+          color: white;
+        }
+      }
+    }
+
+    .selected {
+      background-color: #7e54cb;
+    }
+  }
+
+  .current-user {
+    background-color: #0d0d30;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+    padding: 0.4rem;
+
+    .avatar {
+      img {
+        height: 4rem;
+        max-inline-size: 100%;
+      }
+    }
+
+    .username {
+      h2 {
+        margin: 0;
+        color: white;
+      }
+    }
+  }
+}

@@ -57,7 +57,7 @@ const SetAvatar = () => {
           user.isAvatarImageSet = true;
           user.avatarImage = dataImage.data.image;
           localStorage.setItem("chatApp", JSON.stringify(user));
-          // navigate("/");
+          navigate("/");
         } else {
           toast.error("Error setting avatar. Please try again.");
         }

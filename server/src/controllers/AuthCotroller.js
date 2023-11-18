@@ -82,13 +82,14 @@ const Login = async (req, res) => {
 const SetAvatar = async (req, res) => {
   try {
     const userId = req.params.id;
-    const avatarImage = req.params.image;
+    const avatarImage = req.body.image;
     const userData = await User.findByIdAndUpdate(userId, {
       isAvatarImageSet: true,
       avatarImage: avatarImage,
     });
 
     return res.status(200).json({
+      success: true,
       isSet: userData.isAvatarImageSet,
       image: userData.avatarImage,
     });
@@ -100,4 +101,24 @@ const SetAvatar = async (req, res) => {
   }
 };
 
-module.exports = { Register, Login, SetAvatar };
+const AllUsers = async (req, res) => {
+  try {
+    const users = await User.find({ _id: { $ne: req.params.id } }).select([
+      "-password",
+      "-isAvatarImageSet",
+    ]);
+
+    return res.status(200).json({
+      users,
+    });
+  } catch (error) {
+    return res.status(500).json({
+      success: false,
+      message: error.message,
+    });
+  }
+};
+
+const Logout = async (req, res) => {};
+
+module.exports = { Register, Login, SetAvatar, AllUsers, Logout };
