@@ -1,5 +1,8 @@
 .chat-container {
   padding-top: 1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
 
   .chat-header {
     display: flex;
