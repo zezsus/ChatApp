@@ -33,7 +33,6 @@ const Login = () => {
         username,
         password,
       });
-      console.log(data);
       if (data.success) {
         localStorage.setItem("chatApp", JSON.stringify(data.user));
         navigate("/");

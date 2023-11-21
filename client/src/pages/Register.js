@@ -42,7 +42,6 @@ const Register = () => {
             email,
             password,
           });
-          console.log(data);
           if (data.success) {
             localStorage.setItem("chatApp", JSON.stringify(data.newUser));
             navigate("/");
